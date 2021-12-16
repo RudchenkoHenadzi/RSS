@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Art-quiz</title>
+</head>
+<body>
+  
+  <section class="main-content">
+
+      <div class="container">
+
+      <header class="logo logo j-left">
+        <a href="index.html"><img src="assets/img/logo.png" alt="Логотип"></a>
+        <div class="title-page">Settings</div>
+      </header>
+
+      <div class="volume">
+        <div class="volume__icon">
+          <img src="assets/svg/volume-on.svg" alt="Звук вкл">
+        </div>
+        <div class="volume-sound-progress">
+          <div class="volume__sound-off">
+            <img src="assets/svg/volume-off.svg" alt="Звук выкл">
+          </div>
+          <div class="volume__sound-progress">
+            <input type="range" id="input-range" class="input-range" min="0" max="100" value="50" step="1">
+          </div>
+          
+        </div>
+        <div class="volume__switch-sound">
+          <input type="checkbox" id="input-sound" class="input-sound">
+          <p>On/Off</p>
+        </div>
+        <div class="volume__text">Volume</div>
+      </div>
+      
+      <div class="time-game">
+        <div class="time-game__icon"><img src="assets/svg/clock.svg" alt="Игра на время"></div>
+        <div class="time-game__check">
+          <input type="checkbox" id="input-check" class="input-check">
+          <p>On/Off</p>
+        </div>
+        <div class="time-game__count-time">
+          <button class="time-minus">-</button>
+          <span>30</span>
+          <button class="time-plus">+</button>
+        </div>
+        <div class="time-game__text">Time game</div>
+      </div>
+
+    </div>
+    </section>
+    <script src="js/setting.js"></script>
+</body>
+</html>
