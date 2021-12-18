@@ -458,12 +458,14 @@ function timerStart() {
       if(timerCount === 0) {
         console.log('Время вышло');
         
-        decorationModalWindow ()
+        decorationModalWindow ();
         questionsModalRightAnswer.classList.add('active');
         wrongAnswer.classList.add('active');
+
         if(localStorage.getItem('checkSound') === 'true') {
           audioWrong.play();
         }
+        
         clearTimeout(timerID);
         counter += 1;
       }

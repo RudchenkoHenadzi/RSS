@@ -376,61 +376,7 @@ answerOptions.forEach(element => {
       }
     }
 
-    //console.log(artistName.dataset.author + ' | ' + s[counter].dataset.author + ' | ' + counter + ' | ' + score);
-
     decorationModalWindow();
-
-    /*if(document.body.id === 'questions-portrait') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.portrait} / 10`;
-        modalScore.classList.add('active');
-      }
-    } else if(document.body.id === 'questions-landscape') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.landscape} / 10`;
-        modalScore.classList.add('active');
-      }
-    } else if(document.body.id === 'questions-still-life') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.stilllife} / 10`;
-        modalScore.classList.add('active');
-      }
-    } else if(document.body.id === 'questions-impressionism') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.impressionism} / 10`;
-        modalScore.classList.add('active');
-      }
-    } else if(document.body.id === 'questions-expressionism') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.expressionism} / 10`;
-        modalScore.classList.add('active');
-      }
-    } else if(document.body.id === 'questions-avant-garde') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.avantgarde} / 10`;
-        modalScore.classList.add('active');
-      }
-    } else if(document.body.id === 'questions-renaissance') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.renaissance} / 10`;
-        modalScore.classList.add('active');
-      }
-    } else if(document.body.id === 'questions-surrealism') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.surrealism} / 10`;
-        modalScore.classList.add('active');
-      }
-    } else if(document.body.id === 'questions-kitsch') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.kitsch} / 10`;
-        modalScore.classList.add('active');
-      }
-    } else if(document.body.id === 'questions-minimalism') {
-      if(counter === 10) {
-        modalScoreNumber.innerHTML = `${scoreQuestion.minimalism} / 10`;
-        modalScore.classList.add('active');
-      }
-    }*/
 
     if(document.body.id === 'questions-portrait') {
       localStorage.setItem('portraitScoreQuestions', scoreQuestion.portrait);
@@ -453,6 +399,8 @@ answerOptions.forEach(element => {
     } else if(document.body.id === 'questions-minimalism') {
       localStorage.setItem('minimalismScore', scoreQuestion.minimalism);
     }
+
+    clearTimeout(timerID);
 
     /*switchTitle();
     indicatorActive();
@@ -530,6 +478,11 @@ nextButton.addEventListener('click', function() {
   indicatorActive();
   questionsItemActive();
 
+  timerCount = +localStorage.getItem('timerCount');
+  timerStart();
+
+  console.log(counter)
+
 });
 
 /* time */
@@ -554,21 +507,26 @@ function timerStart() {
       
       if(timerCount === 0) {
         console.log('Время вышло');
-        
-        decorationModalWindow ()
+        decorationModalWindow();
         questionsModalRightAnswer.classList.add('active');
         wrongAnswer.classList.add('active');
+        switchTitle();
+        questionsItemActive();
         if(localStorage.getItem('checkSound') === 'true') {
           audioWrong.play();
         }
         clearTimeout(timerID);
-        counter += 1;
+
+        /*counter += 1;
+        console.log(counter);
+        indicatorActive();*/
+        
       }
 
     }, 1000);
   }
 }
 
-/*timerStart();*/
+timerStart();
 
 import images from './images.js';
