@@ -1,0 +1,1719 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+/* Переменные */
+
+$gold-color: #9D8665;
+$red-color: #710707;
+$black-color: #030303;
+$white-color: #fff;
+
+/* Конец переменных */
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+iframe {
+    border: 0px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Стилизация кнопки */
+
+.btn-burger {
+    display: none;
+    width: 32px;
+    height: 18px;
+    position: relative;
+    cursor: pointer;
+    span {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        top: 50%;
+        transform: translate(0px, -50%);
+        background-color: $white-color;
+        transition: all 0.5s;
+    }
+}
+
+.btn-burger::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: $white-color;
+    top: 0px;
+    transition: all 0.5s;
+}
+
+.btn-burger::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: $white-color;
+    bottom: 0px;
+    transition: all 0.5s;
+}
+
+.btn-burger.active {
+    span {
+        transform: scale(0);
+    }
+}
+
+.btn-burger.active::before {
+    top: 50%;
+    transform: rotate(-45deg) translate(0, -50%);
+}
+
+.btn-burger.active::after {
+    top: 50%;
+    transform: rotate(45deg) translate(0, 50%);
+}
+
+/* Убираем стрелочки в инпутах number */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; 
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+/* Конец кода убирающего стрелочки в инпутах number */
+
+.container {
+    margin: 0px auto;
+    max-width: 1440px;
+    padding: 0px 20px;
+}
+
+.section-title {
+    font-size: 80px;
+    font-family: 'Forum', cursive;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: $white-color;
+    font-weight: 400;
+}
+
+.title-underline:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $red-color;
+    margin-top: 45px; 
+}
+
+h2.section-title {
+    font-size: 80px;
+    font-family: 'Forum', cursive;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: $white-color;
+    font-weight: 400;
+    line-height: 60px;
+    @media (max-width: 1150px) {
+        font-size: 50px;
+    }
+}
+
+h2.title-underline:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $red-color;
+    margin-top: 45px; 
+}
+
+.button-main {
+    display: inline-block;
+    background: $red-color;
+    height: 75px;
+    border-radius: 10px;
+    padding: 0px 64px;
+    color: $white-color;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: 300;
+    line-height: 75px;
+}
+
+.button-main:hover {
+    background-color: #9b8665;
+}
+
+.font-gold {
+    color: $gold-color;
+}
+
+h2.font-gold {
+    color: $gold-color;
+}
+
+/* Секция Header */
+header {
+    background-color: $black-color;
+}
+
+.header-wrap {
+    display: flex;
+    justify-content: space-between;
+    height: 150px;
+    align-items: center;
+}
+
+.logo {
+    a {
+        color: $white-color;
+        text-decoration: none;
+        font-size: 28px;
+        font-family: 'Forum', cursive;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+    }
+    img {
+        margin-right: 25px;
+    }
+}
+
+.navigation {
+    transition: 0.5s;
+    ul {
+        display: flex;
+        font-weight: 200;
+        letter-spacing: 2px;
+        li {
+            margin-left: 55px;
+            a {
+                color: $white-color;
+                text-decoration: none;
+            }
+            a:hover {
+                color: $gold-color;
+            }
+            a:active {
+                color: #7E6C51;
+            }
+        }
+    }
+}
+
+.navigation-other-wrap {
+    display: none;
+}
+
+/* Конец секции Header */
+
+/* Секция Welcome */
+
+.welcome {
+    background-color: $black-color;
+    padding-bottom: 60px;
+    &__text {
+        position: absolute;
+        width: 598px;
+        left: 0px;
+        z-index: 1;
+        margin-top: 150px;
+        p {
+            margin-top: 25px;
+            margin-bottom: 75px;
+            color: $white-color;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-size: 28px;
+        }
+
+    }
+}
+
+.welcome-wrap {
+    display: flex;
+    position: relative;
+    justify-content: end;
+}
+
+/* Слайдер */
+
+.welcome__slider {
+    position: relative;
+}
+
+.slider-container {
+    .item {
+        position: relative;
+        display: none;
+    }
+
+    .item::before {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 100%;
+        background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url(1.jpg);
+    }
+    
+    .active {
+        display: block;
+    }
+}
+
+.slider-control {
+    position: absolute;
+    right: 0px;
+    bottom: -60px;
+    width: 450px;
+    height: 120px;
+    padding: 0px 75px;
+    display: flex;
+    justify-content: end;
+    color: $white-color;
+    align-items: center;
+    background-color: #000;
+}
+
+.control-pade {
+    display: flex;
+    font-weight: 400;
+    .max-page {
+        font-size: 22px;
+    }
+}
+
+.control-dots {
+    display: flex;
+    margin-left: 55px;
+    .dots {
+        width: 16px;
+        height: 16px;
+        background-color: $white-color;
+        margin-right: 15px;
+    }
+    .dots:hover {
+        background-color: $gold-color;
+        cursor: pointer;
+    }
+    .active {
+        background-color: #D2B183;
+    }
+}
+
+.control-array {
+    display: flex;
+    margin-left: 60px;
+    margin-bottom: 5px;
+    svg {
+        fill: $white-color;
+    }
+    svg:hover {
+        fill: $gold-color;
+        cursor: pointer;
+    }
+}
+
+.array-left {
+    margin-right: 20px;
+}
+
+/* Конец слайдера*/
+
+/* Конец секции Welcome */
+
+/* Секция Visiting */
+
+.visiting {
+    padding: 90px 0px 80px 0px;
+}
+
+.visiting-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media (max-width: 1360px) {
+        justify-content: space-around;
+    }
+    
+}
+
+
+
+.visiting__item {
+    margin-top: 75px;
+    img {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    h3 {
+        text-transform: uppercase;
+        font-size: 32px;
+        letter-spacing: 5px;
+        font-family: 'Forum', cursive;
+        font-weight: 400;
+    }
+    h3.title-underline::after {
+        width: 300px;
+        height: 2px;
+        margin-top: 10px;
+        transition: 1s;
+    }
+    
+    p {
+        font-weight: 200;
+        margin: 10px 0px 0px 0px;
+    }
+    a {
+        text-decoration: none;
+        display: block;
+        color: #000;
+    }
+    a:hover {
+        h3.title-underline::after {
+            width: 100%;
+        }
+    }
+    
+}
+
+/* Конец секции Visiting */
+
+/* Секция Explore */
+
+.explore {
+    padding: 75px 0px;
+    background-color: $black-color;
+}
+
+.explore-wrap {
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 1150px) {
+        align-items: flex-end;
+    }
+}
+
+.explore__info {
+    margin-right: 60px;
+    max-width: 660px;
+    h2 {
+        margin-bottom: 75px;
+    }
+    p {
+        color: $white-color;
+        font-weight: 300;
+        margin-bottom: 25px;
+        line-height: 38px;
+        span {
+            color: #CAAA7D;
+        }
+    }
+    @media (max-width: 1150px) {
+        max-width: 505px;
+    }
+}
+
+.explore__picture {
+    img {
+        width: 100%;
+    }
+}
+
+/* Конец секции Explore */
+
+/* Секция Video */
+
+.video {
+    padding: 75px 0px;
+    &__title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 75px;
+        h2 {
+            flex: 1;
+        }
+        p {
+            flex: 1;
+            font-weight: 300;
+            line-height: 38px;
+        }
+    }
+    &__main {
+        margin-bottom: 40px;
+        iframe {
+            width: 100%;
+            height: 650px;
+        }
+    }
+}
+
+.video-slider-container {
+    overflow: hidden;
+    iframe {
+        width: 100%;
+        height: 254px;
+        margin-right: 42px;
+    }
+
+    iframe:last-child {
+        margin-right: 0;
+    }
+}
+
+.video-slider-container-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% * 2);
+    transform: translateX(0%);
+    transition: 1s;
+}
+
+.video-sliders-item {
+    width: 100%;
+    margin-left: 42px;
+}
+
+.video-sliders-item:first-child {
+    margin-left: 0px;
+}
+
+.video-slider-controls {
+    width: 200px;
+    height: 12px;
+    margin: 40px auto 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .video-dots {
+        cursor: pointer;
+        svg {
+            fill: #999999;
+        }
+        svg:hover {
+            fill: $red-color;
+        }
+    }
+    .active {
+        svg {
+            fill: #333333;
+        }
+    }
+    .video-array-left, .video-array-right  {
+        cursor: pointer;
+        svg {
+            fill: #999999;
+        }
+        svg:hover {
+            fill: $red-color;
+        }
+    }
+
+}
+
+/* Конец секции Video */
+
+/* Секция Gallery */
+
+.gallery {
+    background-color: $black-color;
+    padding: 75px 0px 0px 0px;
+}
+
+.gallery-wrap {
+    position: relative;
+    margin-top: 75px;
+    height: 1960px;
+    overflow: hidden;
+    background-position: bottom;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+}
+
+.gallery-wrap::before {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 360px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+}
+
+.gallery-container {
+    column-count: 3;
+    column-gap: 36px;
+    column-rule-color: $white-color;
+    height: 2850px;
+}
+
+.gallaty-item {
+    margin-bottom: 24px;
+    img {
+        width: 100%;
+    }
+}
+
+.gallaty-item:first-child {
+    img {
+        margin-top: 50px;
+    }
+}
+
+.gallaty-item:nth-child(9) {
+    img {
+        margin-top: 50px;
+    }
+}
+
+/* Конец секции Gallery */
+
+/* Секция Tickets */
+
+.tickets {
+    position: relative;
+    padding-top: 75px;
+    .section-title {
+        margin-bottom: 75px;
+    }
+    form {
+        display: flex;
+        justify-content: space-between;
+        fieldset {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+
+        .ticket-type-radio {
+            font-size: 22px;
+            font-weight: 300;
+            margin-right: 0;
+        }
+
+    }
+}
+
+.ticket-type {
+    display: flex;
+    flex-direction: column;
+    input {
+        margin-right: 23px;
+    }
+    input:checked {
+        background-color: red;
+    }
+    .ticket-type-radio {
+        cursor: pointer;
+        margin-bottom: 25px;
+    }
+    legend {
+        margin-bottom: 50px;
+        font-weight: 700;
+    }
+    @media (max-width: 1250px) {
+        display: none;
+    }
+}
+
+.ticket-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    p {
+        font-weight: 300;
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    p.ticket-total {
+        font-weight: 700;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    legend {
+        margin-bottom: 25px;
+        font-weight: 700;
+        text-align: right;
+    }
+}
+
+/*label.ticket-count {
+    height: 20px;
+    display: flex;
+    padding: 12px 14px;
+    border: 3px solid #000;
+    width: 116px;
+    margin-bottom: 10px;
+    button {
+        cursor: pointer;
+        font-size: 32px;
+        color: #000;
+        border: 0px;
+        background-color: transparent;
+        line-height: 20px;
+    }
+    input {
+        width: 76px;
+        border: 0px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 300;
+    }
+}*/
+
+.ticket-count {
+    height: 20px;
+    display: flex;
+    padding: 12px 14px;
+    border: 3px solid #000;
+    width: 116px;
+    margin-bottom: 10px;
+    button {
+        width: 18px;
+        cursor: pointer;
+        font-size: 32px;
+        color: #000;
+        border: 0px;
+        background-color: transparent;
+        line-height: 20px;
+    }
+    input {
+        width: 76px;
+        border: 0px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 300;
+    } 
+}
+
+.tickets-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tickets__img {
+    margin-right: 60px;
+}
+
+.tickets__form {
+    flex: 1;
+}
+
+.ticket-button {
+    border-radius: 2px;
+    background-color: #000;
+    font-weight: 300;
+    padding: 12px 43px;
+    border: 0px;
+    color: $white-color;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.ticket-button:hover {
+    background-color: $gold-color;
+    color: #000;
+}
+
+.tickets-bgi {
+    margin-top: 75px;
+    height: 400px;
+    overflow: hidden;
+    background-image: url(../assets/img/parallax.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    img {
+        width: 100%;
+        object-fit: cover;
+        object-position: 0px -385px;
+    }
+}
+
+/* Секция формы заказа билетов */
+
+.booking-tickets {
+    background-color: $white-color;
+    display: none;
+    position: fixed;
+    top: calc(50% - (845px / 2));
+    right: calc(50% - (1440px / 2));
+    width: 1440px;
+    margin: 0px auto;
+    color: $white-color;
+    z-index: 1;
+    padding: 91px 0px;
+    &__button-closed {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: 0;
+        right: 0;
+        margin: 30px;
+        cursor: pointer;
+    }
+    &__button-closed::before {
+        position: absolute;
+        top: 50%;
+        content: '';
+        width: 25px;
+        height: 1px;
+        background-color: $black-color;
+        transform: rotate(-45deg);
+    }
+    &__button-closed::after {
+        position: absolute;
+        top: 50%;
+        content: '';
+        width: 25px;
+        height: 1px;
+        background-color: $black-color;
+        transform: rotate(45deg);
+    }
+    @media (max-width: 1440px) {
+        width: 1030px;
+        top: calc(50% - (768px / 2));
+        right: calc(50% - (1030px / 2));
+        padding: 75px 0px 30px 0px;
+    }
+    @media (max-width: 1023px) {
+        width: 590px;
+        height: 100%;
+        overflow: scroll;
+        top: 5%;
+        right: calc(50% - (590px / 2));
+        padding: 75px 0px 30px 0px;
+    }
+    @media (max-width: 768px) {
+        width: 420px;
+        right: calc(50% - (420px / 2));
+    }
+}
+
+.booking-tickets.active {
+    display: block;
+}
+
+.booking-content {
+    width: 970px;
+    height: 100%;
+    margin: 0px auto;
+    background-color: $white-color;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 40px;
+    @media (max-width: 1023px) {
+        flex-direction: column;
+        width: 530px;
+        align-items: center;
+        justify-content: flex-start !important;
+        height: 1550px;
+    }
+    @media (max-width: 768px) {
+        width: 360px;
+        height: 1830px;
+    }
+}
+
+.booking-info {
+    width: 400px;
+    @media (max-width: 1023px) {
+        width: 530px;
+    }
+    @media (max-width: 768px) {
+        width: 360px;
+    }
+}
+
+.booking-pay {
+    flex: 1;
+    @media (max-width: 1023px) {
+        width: calc(530px - 60px);
+        flex: none;
+    }
+    @media (max-width: 768px) {
+        width: calc(360px - 30px);
+        padding: 25px 15px !important;
+    }
+}
+
+.booking-logo {
+    margin-bottom: 60px;
+    &__title {
+        font-size: 50px;
+        color: $gold-color;
+        line-height: 55.2px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        font-family: 'Forum', cursive;
+        @media (max-width: 768px) {
+            font-size: 32px;
+        }
+    }
+    &__subtitle {
+        position: relative;
+        font-size: 18px;
+        font-weight: 400;
+        color: $red-color;
+        padding-bottom: 10px;
+    }
+    &__subtitle::after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        content: "";
+        width: 100%;
+        height: 3px;
+        background: $red-color;
+        opacity: 0.9;
+    }
+}
+
+.booking-data {
+    input, select {
+        width: 100%;
+        height: 45px;
+        border: 1px solid $black-color;
+        margin-bottom: 20px;
+        padding: 0;
+        font-size: 18px;
+
+    }
+    input::-webkit-input-placeholder {
+        color: $black-color;
+    }
+
+    input[type=date]::-webkit-datetime-edit-text,
+    input[type=time]::-webkit-datetime-edit-text
+    {
+        display: none;
+    }
+    
+    input[type=date]::-webkit-datetime-edit-month-field {
+        display: none;
+    }
+    
+    input[type=date]::-webkit-datetime-edit-day-field {
+        display: none;
+    }
+    
+    input[type=date]::-webkit-datetime-edit-year-field {
+        display: none;
+    }
+
+    input[type=time]::-webkit-datetime-edit-fields-wrapper {
+        display: none;
+    }
+
+}
+
+.booking-date-time {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    &__date, &__time {
+        position: relative;
+        flex: 1;
+        input {
+            position: relative;
+        }
+        input::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        input::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        label {
+            position: absolute;
+            top: 13px;
+            left: 45px;
+            color: $black-color;
+            font-size: 18px; 
+            font-weight: 400;
+        }
+    }
+    &__date {
+        position: relative;
+        span.input-calendar {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            left: 18px;
+            top: calc(50% - ((15px / 2) + 10px));
+            background-image: url(../assets/svg/calendar.svg);
+        }
+        span.input-placeholder {
+            position: absolute;
+            top: calc(50% - ((22px / 2) + 10px));
+            left: 50px;
+            font-size: 18px;
+            font-weight: 400;
+            color: $black-color;
+        }
+        input[type=date]::-webkit-calendar-picker-indicator { 
+            background-image: url(../assets/svg/booking-arrow.svg);
+            position: absolute;
+            cursor: pointer;
+            right: 15px;
+            top: calc(50% - (17px / 2));
+            width: 17px;
+            height: 17px;
+            opacity: 1;
+        }
+    }
+    &__time {
+        span.input-time {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            left: 18px;
+            top: calc(50% - ((15px / 2) + 10px));
+            background-image: url(../assets/svg/booking-clock.svg);
+        }
+        span.input-placeholder {
+            position: absolute;
+            top: calc(50% - ((22px / 2) + 10px));
+            left: 50px;
+            font-size: 18px;
+            font-weight: 400;
+            color: $black-color;
+        }
+        input[type=time]::-webkit-calendar-picker-indicator { 
+            background-image: url(../assets/svg/booking-arrow.svg);
+            position: absolute;
+            cursor: pointer;
+            right: 15px;
+            top: calc(50% - (17px / 2));
+            width: 17px;
+            height: 17px;
+            opacity: 1;
+        }
+    }
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+.booking-main-date {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 45px);
+    input, select {
+        padding-left: 45px;
+        position: relative;
+    }
+
+    &__username,
+    &__useremail,
+    &__userphone
+    {
+        margin-bottom: 20px;
+        position: relative;
+        input {
+            margin-bottom: 0;
+        }
+    }
+
+    /*&__username {
+        margin-bottom: 20px;
+        input {
+            margin-bottom: 0;
+        }
+    }*/
+
+    &__username::before,
+    &__useremail::before,
+    &__userphone::before
+    {
+        content: '';
+        position: absolute;
+        left: 15px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+    }
+
+    &__username::before {
+        background-image: url(../assets/svg/booking-username.svg);
+        width: 13px;
+        height: 15px;
+        top: 15px;
+    }
+
+    &__useremail::before {
+        background-image: url(../assets/svg/booking-email.svg);
+        width: 15px;
+        height: 11px;
+        top: 17px;
+    }
+
+    &__userphone::before {
+        background-image: url(../assets/svg/booking-phone.svg);
+        width: 14px;
+        height: 23px;
+        top: 11px;
+    }
+
+    &__typeticket {
+        position: relative;
+        border: 1px solid $black-color;
+        padding-left: 45px;
+        color: $black-color;
+        line-height: 45px;
+        width: 100%;
+        height: 45px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        overflow: hidden;
+        transition: 0.5s;
+        font-size: 18px;
+    }
+
+    &__typeticket.active {
+        height: calc(4 * 45px);
+    }
+
+    &__typeticket.active::after {
+        transform: rotate(180deg);
+    }
+
+    &__typeticket-dropdown-list {
+        position: absolute;
+        font-weight: 300;
+        left: 0;
+        width: 100%;
+        color: $black-color;
+        border-top: 1px solid $black-color;
+        border-bottom: 1px solid $black-color;
+        z-index: 2;
+        li {
+            padding-left: 45px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        li:nth-child(even){
+            background-color: #E7E7E7;
+        }
+        li:hover {
+            background-color: $gold-color;
+        }
+        li:hover:nth-child(even) {
+            background-color: $gold-color;
+        }  
+    }
+
+    &__typeticket::before {
+        position: absolute;
+        content: "";
+        background-image: url(../assets/svg/booking-ballot.svg);
+        width: 15px;
+        height: 15px;
+        top: 16px;
+        left: 15px;
+    }
+
+    &__typeticket::after {
+        position: absolute;
+        content: "";
+        background-image: url(../assets/svg/booking-arrow.svg);
+        width: 17px;
+        height: 17px;
+        top: 16px;
+        right: 15px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+}
+
+.user-name-validation,
+.email-validation,
+.phone-validation
+{
+    color: $red-color;
+    font-size: 12px;
+    display: none;
+}
+
+.user-name-validation.suit,
+.email-validation.suit,
+.phone-validation.suit
+{
+    color: green;
+}
+
+.user-name-validation.active,
+.email-validation.active,
+.phone-validation.active
+{
+    display: inline-block;
+}
+
+.booking-entry-ticket {
+    border: 1px solid $black-color;
+    padding: 10px 15px 15px 15px;
+
+    &__title {
+        position: relative;
+        color: $gold-color;
+        font-size: 18px;
+        line-height: 19.87px;
+        margin-bottom: 18px;
+        padding-bottom: 5px;
+    }
+
+    &__title::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background-color: $red-color;
+        right: 0;
+        bottom: 0;
+    }
+
+    &__basic,
+    &__senior {
+        display: flex;
+        justify-content: space-between;
+        color: $black-color;
+        font-size: 18px;
+        font-weight: 400;
+        input {
+            width: 105px;
+            height: 25px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 0;
+        }
+    }
+
+    &__senior {
+        .booking-entry-ticket__input {
+            margin-bottom: 0;
+        }
+    }
+
+    &__input {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    &__input-minus,
+    &__input-plus
+    {
+        position: absolute;
+        width: 35px;
+        height: 25px;
+        top: 1px;
+        background-color: $black-color;
+        color: $white-color;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 1;
+    }
+    &__input-minus:hover,
+    &__input-plus:hover
+    {
+        background-color: $gold-color;
+    }
+    &__input-minus {
+        background-image: url(../assets/svg/booking-minus.svg);
+        left: 1px;
+    }
+    &__input-plus {
+        background-image: url(../assets/svg/booking-plus.svg);
+        right: 1px;
+    }
+}
+
+.booking-pay {
+    border: 1px solid $black-color;
+    color: $black-color;
+    padding: 25px 30px;
+    &__button {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 26px;
+        a {
+            background-color: $red-color;
+            text-align: center;
+            display: block;
+            color: $white-color;
+            text-decoration: none;
+            height: 45px;
+            padding: 0px 85px;
+            line-height: 45px;
+        }
+        a:hover {
+            background-color: $gold-color;
+        }
+    }
+}
+
+.booking-overview {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    &__title,
+    &__sub-title
+    {
+        font-weight: 500;
+    }
+
+    &__title {
+        font-size: 32px;
+        line-height: 37.5px;
+        margin-bottom: 2px;
+    }
+
+    &__sub-title {
+        color: $red-color;
+        margin-bottom: 10px;
+        line-height: 25.78px;
+        font-size: 22px;
+    }
+
+    &__date {
+        font-size: 18px;
+        li {
+            margin-bottom: 5px;
+            img {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.booking-overview-img {
+    @media (max-width: 768px) {
+        img {
+            max-width: 120px;
+        }
+        
+    }
+}
+
+.booking-price-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    margin-bottom: 10px;
+    position: relative;
+    &__count-ticket {
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+        span {
+            background-color: $black-color;
+            padding: 0px 11px;
+            color: #A4A4A3;
+            font-size: 18px;
+            border-radius: 20%;
+            margin-right: 10px;
+        }
+    }
+    &__total-ticket {
+        font-size: 22px;
+    }
+    &__title-total,
+    &__all-total
+    {
+        font-size: 32px;
+        line-height: 37.5px;
+    }
+
+}
+
+.booking-price-row:last-child {
+    padding-top: 10px;
+}
+
+.booking-price-row:last-child::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: 0;
+    background-color: $red-color;
+}
+
+.booking-credit-card {
+    position: relative;
+    display: flex;
+    padding-bottom: 30px;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.credit-card-front-side,
+.credit-card-back-side {
+    width: 360px;
+    height: calc(211px - 30px);
+    background-color: #BCBCBC;
+    border-radius: 5px;
+    padding: 20px 0px;
+}
+
+.credit-card-front-side {
+    width: calc(360px - 40px);
+    z-index: 1;
+    padding: 15px 20px;
+    font-size: 12px;
+    input {
+        height: 35px;
+        border: 0.5px solid #A4A4A3;
+        padding: 0;
+        width: 100%;
+        padding-left: 10px;
+    }
+    &__card-number {
+        display: flex;
+        flex-direction: column;
+        width: 205px;
+        margin-bottom: 10px;
+        label {
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+    }
+    &__mounth {
+        width: calc(50% - 12.5px);
+        position: relative;
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+        .array-form {
+            position: absolute;
+            content: '';
+            width: 28px;
+            height: 100%;
+            top: 0;
+            right: -10px;
+            border-left: 0.5px solid #A4A4A3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3px;
+            span.array-top {
+                width: 0;
+                height: 0;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-bottom: 6px solid #A4A4A3;
+                cursor: pointer;
+            }
+            span.array-bottom {
+                width: 0;
+                height: 0;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-top: 6px solid #A4A4A3;
+                cursor: pointer;
+            }
+        }
+    }
+    &__mounth-input {
+        position: relative;
+    }
+    &__year {
+        width: calc(50% - 12.5px);
+        position: relative;
+        .array-form {
+            position: absolute;
+            content: '';
+            width: 28px;
+            height: 100%;
+            top: 0;
+            right: -10px;
+            border-left: 0.5px solid #A4A4A3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3px;
+            span.array-top {
+                width: 0;
+                height: 0;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-bottom: 6px solid #A4A4A3;
+                cursor: pointer;
+            }
+            span.array-bottom {
+                width: 0;
+                height: 0;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-top: 6px solid #A4A4A3;
+                cursor: pointer;
+            }
+        }
+    }
+    &__logo {
+        margin-top: 22px;
+        display: flex;
+        flex-direction: column;
+        img {
+            margin-bottom: 15px;
+            float: right;
+        }
+    }
+    &__cardholder-name {
+        width: calc(100% - 10px);
+        margin-top: 5px;
+        label {
+            margin-bottom: 5px;
+            display: block;
+        }
+    }
+    @media (max-width: 768px) {
+        width: calc(330px - 40px);
+    }
+}
+
+.credit-card-front-side-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.credit-card-expiration-date {
+    display: flex;
+    width: 205px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.credit-card-back-side {
+    position: absolute;
+    background-color: #939393;
+    top: 30px;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    height: calc(211px - 40px);
+    &__black-line {
+        width: 100%;
+        height: 45px;
+        background-color: $black-color;
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+
+    &__cvc-cvv {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    &__cvc-input {
+        input {
+            border: 0px;
+            text-align: center;
+            width: 100%;
+            height: 35px;
+            padding: 0;
+        }
+        margin-bottom: 6px;
+    }
+
+    &__cvc-descr {
+        font-size: 10px;
+        color: #161615;
+    }
+
+    @media (max-width: 768px) {
+        position: relative;
+        width: 330px;
+    }
+}
+
+.credit-card-back-side-info {
+    width: 75px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    align-items: center;
+}
+
+/* Конец секции Tickets */
+
+.contacts {
+    padding: 75px 0px;
+    .section-title {
+        margin-bottom: 75px;
+    }
+}
+
+.contacts-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contacts__info {
+    flex: 0 0 33.33%;
+    h3 {
+        font-size: 28px;
+        margin-bottom: 50px;
+    }
+    ul {
+        
+        li {
+            margin-bottom: 25px;
+            font-weight: 300;
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.contacts__map {
+    flex: 0 0 66.66%;
+    img {
+        width: 100%;
+    }
+}
+
+footer {
+    background-color: #000;
+    font-weight: 200;
+}
+
+.top-line {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 75px;
+    padding-bottom: 50px;
+    @media (max-width: 705px) {
+        flex-direction: column;
+    }
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 75%;
+    @media (max-width: 950px) {
+        flex-direction: column;
+        flex: 0 0 70%;
+    }
+}
+
+.footer-logo {
+    flex: 0 0 25%;
+    a {
+        color: $white-color;
+        text-decoration: none;
+        font-size: 28px;
+        font-family: 'Forum', cursive;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+    }
+    img {
+        margin-right: 25px;
+    }
+    @media (max-width: 950px) {
+        flex: 0 0 30%;
+    }
+}
+
+.footer-menu {
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    gap: 150px;
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 25px 0px;
+        li {
+            a {
+                color: $white-color;
+                text-decoration: none;
+            }
+            a:hover {
+                color: $gold-color;
+            }
+        }
+    }
+}
+
+.footer-menu-420 {
+    display: none;
+}
+
+.social-network {
+    display: flex;
+    ul {
+        display: flex;
+        align-items: flex-end;
+        gap: 25px;
+    }
+    svg {
+        width: 48px;
+        height: 48px;
+    }
+    @media (max-width: 950px) {
+        justify-content: flex-end;
+        margin-top: 42px;
+    }
+}
+
+.bottom-line {
+    border-top: 3px solid $white-color;
+    color: $white-color;
+    padding: 50px 0px;
+    ul {
+        display: flex;
+        justify-content: space-between;
+    }
+}
