@@ -74,7 +74,7 @@ for(let i = 0; i < 10; i++) {
     randomArr.push(images[Math.floor(Math.random() * (241 - 0)) + 0].author);
   }
 
-  function shuffle(arr){
+  function shuffle(arr) {
     let j, temp;
     for(let i = arr.length - 1; i > 0; i--){
       j = Math.floor(Math.random()*(i + 1));
@@ -88,7 +88,7 @@ for(let i = 0; i < 10; i++) {
     return randomShuffleArr;
   }
 
-  shuffle(randomArr)
+  shuffle(randomArr);
 
   //questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i].imageNum}.jpg" alt="${images[i].author}">`;
 

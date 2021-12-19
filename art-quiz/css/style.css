@@ -364,6 +364,10 @@ header.j-left p {
   }
 }
 
+.d-hidden {
+  display: none;
+}
+
 .disable {
   color: #000;
 }

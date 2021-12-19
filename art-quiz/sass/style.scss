@@ -287,7 +287,10 @@ header.j-left {
   @media (min-width: 1440px) {
     flex: calc(20% - 20px);
   }
+}
 
+.d-hidden {
+  display: none;
 }
 
 .disable {
