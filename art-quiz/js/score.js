@@ -40,6 +40,8 @@ for(let i = 0; i < 10; i++) {
 }
 
 const item = document.querySelectorAll('.item');
+const statusPassed = document.querySelectorAll('.item__status-passed');
+const statusNotPassed = document.querySelectorAll('.item__status-not-passed');
 
 let startVisibleItem = 0;
 let endVisibleItem = 10;
@@ -65,7 +67,7 @@ for(let i = 0; i < 100; i++) {
 
     itemImages[i].innerHTML = 
     `
-        <img src="assets/art/img/${images[i].imageNum}.jpg" alt="${images[i].author}">
+        <img src="assets/art/img/${images[i].imageNum}.jpg" alt="${images[i].name}">
     `
 
 }
@@ -122,5 +124,21 @@ nextButton.addEventListener('click', function(event) {
 const pagination = document.querySelector('.pagination__page > span:first-child');
 
 pagination.innerHTML = pageNumber;
+
+/* Меняем статус картинок */
+
+const img = document.querySelectorAll('.item__image > img');
+
+console.log(img[0].alt);
+console.log(JSON.parse(localStorage.getItem('statusImages')));
+console.log(JSON.parse(localStorage.getItem('statusImages'))[img[0].alt]);
+
+for(let i = 0; i < 100; i++) {
+    if(JSON.parse(localStorage.getItem('statusImages'))[img[i].alt] === true) {
+        statusPassed[i].classList.add('active');
+    } else {
+        statusNotPassed[i].classList.add('active');
+    }
+}
 
 import images from './images.js';

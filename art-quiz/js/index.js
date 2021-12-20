@@ -22,7 +22,6 @@ audioWrong.volume = (1 / 100) * +localStorage.getItem('count');
 /* Конец */
 
 let counter = 0;
-let score = 0;
 
 /* Начисление очков для каждой из категорий */
 
@@ -37,6 +36,14 @@ let scoreQuestion = {
   'surrealism': 0,
   'kitsch': 0,
   'minimalism': 0
+}
+
+/* Объект хранящий в себе статус картинок */
+
+let statusImages = {};
+
+for(let i = 0; i < 100; i++) {
+  statusImages[images[i].name] = false;
 }
 
 /* Конец */
@@ -90,28 +97,26 @@ for(let i = 0; i < 10; i++) {
 
   shuffle(randomArr);
 
-  //questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i].imageNum}.jpg" alt="${images[i].author}">`;
-
   if(document.body.id === 'portrait') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i].imageNum}.jpg" alt="${images[i].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i].author}">`;
   } else if(document.body.id === 'landscape') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 10].imageNum}.jpg" alt="${images[i + 10].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 10].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 10].author}">`;
   } else if(document.body.id === 'still-life') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 20].imageNum}.jpg" alt="${images[i + 20].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 20].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 20].author}">`;
   } else if(document.body.id === 'impressionism') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 30].imageNum}.jpg" alt="${images[i + 30].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 30].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 30].author}">`;
   } else if(document.body.id === 'expressionism') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 40].imageNum}.jpg" alt="${images[i + 40].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 40].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 40].author}">`;
   } else if(document.body.id === 'avant-garde') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 50].imageNum}.jpg" alt="${images[i + 50].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 50].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 50].author}">`;
   } else if(document.body.id === 'renaissance') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 60].imageNum}.jpg" alt="${images[i + 60].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 60].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 60].author}">`;
   } else if(document.body.id === 'surrealism') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 70].imageNum}.jpg" alt="${images[i + 70].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 70].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 70].author}">`;
   } else if(document.body.id === 'kitsch') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 80].imageNum}.jpg" alt="${images[i+ 80].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 80].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i+ 80].author}">`;
   } else {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 90].imageNum}.jpg" alt="${images[i + 90].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 90].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 90].author}">`;
   }
 
   answersQuestion[i].innerHTML = `<li>${randomShuffleArr[0]}</li>
@@ -146,8 +151,6 @@ function activeElement() {
       dots[counter - 2].classList.add('active');
     }
 
-    console.log(counter);
-
 };
 
 activeElement();
@@ -170,12 +173,20 @@ answersQuestionLi.forEach(element => {
       if(event.currentTarget.innerHTML === imgAlt[counter].alt) {
         questionsModalRightAnswer.classList.add('active');
         rightAnswer.classList.add('active');
+
+        statusImages[imgAlt[counter].dataset.name] = true;
+        localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
+
         if(localStorage.getItem('checkSound') === 'true') {
           audioCorrect.play();
         }
       } else {
         questionsModalRightAnswer.classList.add('active');
         wrongAnswer.classList.add('active');
+
+        statusImages[imgAlt[counter].dataset.name] = false;
+        localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
+
         if(localStorage.getItem('checkSound') === 'true') {
           audioWrong.play();
         }
@@ -280,8 +291,6 @@ answersQuestionLi.forEach(element => {
       /* Конец */
 
       clearTimeout(timerID);
-
-      //activeElement();
 
     });
 });
@@ -456,7 +465,6 @@ function timerStart() {
       }
       
       if(timerCount === 0) {
-        console.log('Время вышло');
         
         decorationModalWindow ();
         questionsModalRightAnswer.classList.add('active');
@@ -475,5 +483,7 @@ function timerStart() {
 }
 
 timerStart();
+
+
 
 import images from './images.js';
