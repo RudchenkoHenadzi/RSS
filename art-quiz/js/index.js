@@ -42,9 +42,11 @@ let scoreQuestion = {
 
 let statusImages = {};
 
-for(let i = 0; i < 100; i++) {
+/*for(let i = 0; i < 100; i++) {
   statusImages[images[i].name] = false;
-}
+}*/
+
+console.log(statusImages);
 
 /* Конец */
 
@@ -100,23 +102,23 @@ for(let i = 0; i < 10; i++) {
   if(document.body.id === 'portrait') {
     questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i].author}">`;
   } else if(document.body.id === 'landscape') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 10].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 10].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 10].imageNum}.jpg" data-name="${images[i + 10].name}" alt="${images[i + 10].author}">`;
   } else if(document.body.id === 'still-life') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 20].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 20].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 20].imageNum}.jpg" data-name="${images[i + 20].name}" alt="${images[i + 20].author}">`;
   } else if(document.body.id === 'impressionism') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 30].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 30].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 30].imageNum}.jpg" data-name="${images[i + 30].name}" alt="${images[i + 30].author}">`;
   } else if(document.body.id === 'expressionism') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 40].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 40].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 40].imageNum}.jpg" data-name="${images[i + 40].name}" alt="${images[i + 40].author}">`;
   } else if(document.body.id === 'avant-garde') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 50].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 50].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 50].imageNum}.jpg" data-name="${images[i + 50].name}" alt="${images[i + 50].author}">`;
   } else if(document.body.id === 'renaissance') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 60].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 60].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 60].imageNum}.jpg" data-name="${images[i + 60].name}" alt="${images[i + 60].author}">`;
   } else if(document.body.id === 'surrealism') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 70].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 70].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 70].imageNum}.jpg" data-name="${images[i + 70].name}" alt="${images[i + 70].author}">`;
   } else if(document.body.id === 'kitsch') {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 80].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i+ 80].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 80].imageNum}.jpg" data-name="${images[i + 80].name}" alt="${images[i+ 80].author}">`;
   } else {
-    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 90].imageNum}.jpg" data-name="${images[i].name}" alt="${images[i + 90].author}">`;
+    questionsImg[i].innerHTML = `<img src="assets/art/img/${images[i + 90].imageNum}.jpg" data-name="${images[i + 90].name}" alt="${images[i + 90].author}">`;
   }
 
   answersQuestion[i].innerHTML = `<li>${randomShuffleArr[0]}</li>
@@ -171,26 +173,32 @@ answersQuestionLi.forEach(element => {
     element.addEventListener('click', function(event) {
 
       if(event.currentTarget.innerHTML === imgAlt[counter].alt) {
+
         questionsModalRightAnswer.classList.add('active');
         rightAnswer.classList.add('active');
 
         statusImages[imgAlt[counter].dataset.name] = true;
         localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
+        
+        console.log(imgAlt[counter]);
 
         if(localStorage.getItem('checkSound') === 'true') {
           audioCorrect.play();
         }
       } else {
+
         questionsModalRightAnswer.classList.add('active');
         wrongAnswer.classList.add('active');
 
-        statusImages[imgAlt[counter].dataset.name] = false;
+        statusImages[imgAlt[counter].dataset.name];
         localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
 
         if(localStorage.getItem('checkSound') === 'true') {
           audioWrong.play();
         }
       }
+
+      console.log(JSON.parse(localStorage.getItem('statusImages')));
 
       /* Запись очков для каждой из категорий */
 
