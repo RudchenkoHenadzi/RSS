@@ -127,6 +127,12 @@ pagination.innerHTML = pageNumber;
 
 /* Меняем статус картинок */
 
+if(JSON.parse(localStorage.getItem('statusImages')) === null) {
+    for(let i = 0; i < 100; i++) {
+        statusNotPassed[i].classList.add('active');
+    }
+}
+
 const img = document.querySelectorAll('.item__image > img');
 
 console.log(img[0].alt);

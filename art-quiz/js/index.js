@@ -42,11 +42,14 @@ let scoreQuestion = {
 
 let statusImages = {};
 
-/*for(let i = 0; i < 100; i++) {
+for(let i = 0; i < 100; i++) {
   statusImages[images[i].name] = false;
-}*/
+}
+
+let newObject = JSON.parse(localStorage.getItem('statusImages'));
 
 console.log(statusImages);
+console.log(newObject);
 
 /* Конец */
 
@@ -167,6 +170,46 @@ const rightAnswer = document.querySelector('.right-answer');
 const wrongAnswer = document.querySelector('.wrong-answer');
 const nextButton = document.querySelector('.questions-modal-answer__button');
 
+function markImages() {
+  if(newObject === null) {
+    answersQuestionLi.forEach(element => {
+      element.addEventListener('click', function(event) {
+
+        if(event.currentTarget.innerHTML === imgAlt[counter].alt) {
+  
+          statusImages[imgAlt[counter].dataset.name] = true;
+          localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
+
+        } else {
+  
+          statusImages[imgAlt[counter].dataset.name] = false;
+          localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
+
+        }
+      });
+    });
+  } else {
+    answersQuestionLi.forEach(element => {
+      element.addEventListener('click', function(event) {
+
+        if(event.currentTarget.innerHTML === imgAlt[counter].alt) {
+
+          newObject[imgAlt[counter].dataset.name] = true;
+          localStorage.setItem(`statusImages`, JSON.stringify(newObject));
+
+        } else {
+
+          newObject[imgAlt[counter].dataset.name] = false;
+          localStorage.setItem(`statusImages`, JSON.stringify(newObject));
+
+        }
+      });
+    });
+  };
+};
+
+markImages();
+
 /* Нажатие на ответ */
 
 answersQuestionLi.forEach(element => {
@@ -177,10 +220,8 @@ answersQuestionLi.forEach(element => {
         questionsModalRightAnswer.classList.add('active');
         rightAnswer.classList.add('active');
 
-        statusImages[imgAlt[counter].dataset.name] = true;
-        localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
-        
-        console.log(imgAlt[counter]);
+        //statusImages[imgAlt[counter].dataset.name] = true;
+        //localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
 
         if(localStorage.getItem('checkSound') === 'true') {
           audioCorrect.play();
@@ -190,8 +231,8 @@ answersQuestionLi.forEach(element => {
         questionsModalRightAnswer.classList.add('active');
         wrongAnswer.classList.add('active');
 
-        statusImages[imgAlt[counter].dataset.name];
-        localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
+        //statusImages[imgAlt[counter].dataset.name] = false;
+        //localStorage.setItem(`statusImages`, JSON.stringify(statusImages));
 
         if(localStorage.getItem('checkSound') === 'true') {
           audioWrong.play();
